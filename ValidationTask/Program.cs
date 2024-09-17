@@ -14,6 +14,8 @@
             Console.Write("Enter last name: ");
             lastName = Console.ReadLine();
             Console.Write("Enter age: ");
+            bool validname = NameValidation(firstName + lastName);
+            if 
             age = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter Password: ");
             password = Console.ReadLine();
@@ -28,9 +30,17 @@
             // Show your evidence in the Readme
 
         }
-        static bool ValidName(string name)
+        static bool NameValidation(string name)
         {
             // name must be at least two characters and contain only letters
+            if (name.Length >= 2 && )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            } 
         }
 
         static bool validAge(int age)
