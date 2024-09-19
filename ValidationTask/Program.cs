@@ -5,21 +5,27 @@
         static void Main(string[] args)
         {
             string firstName, lastName, username, password, emailAddress;
-            int age;
+            //int age;
 
-            // get the user inputs until all are valid.
-            // The username should only be output once
-            Console.Write("Enter first name: ");
-            firstName = Console.ReadLine();
-            Console.Write("Enter last name: ");
-            lastName = Console.ReadLine();
-            Console.Write("Enter age: ");
-            bool validname = NameValidation(firstName + lastName);
-            age = Convert.ToInt32(Console.ReadLine());
+            //// get the user inputs until all are valid.
+            //// The username should only be output once
+            //Console.Write("Enter first name: ");
+            //firstName = Console.ReadLine();
+            //Console.Write("Enter last name: ");
+            //lastName = Console.ReadLine();
+
+            //Console.Write("Enter age: ");
+            //bool validname = NameValidation(firstName + lastName);
+
+            //age = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Enter Password: ");
             password = Console.ReadLine();
-            Console.Write("Enter email address: ");
-            emailAddress = Console.ReadLine();
+            ValidPassword(password);
+            Console.ReadLine();
+
+            //Console.Write("Enter email address: ");
+            //emailAddress = Console.ReadLine();
 
 
             //username = createUserName(firstName,lastName,age);
@@ -56,25 +62,34 @@
         static bool ValidPassword(string password)
         {
             // Check password is at least 8 characters in length
-            if (password.Length >= 8)
+            while (password.Length >= 8)
             {
-                return true;
+
+
+
+                // Check password contains a mix of lower case, upper case and non letter characters
+                // QWErty%^& = valid
+                // QWERTYUi = not valid
+                // ab£$%^&* = not valid
+                // QWERTYu! = valid
+                char[] PwArray = password.ToCharArray();
+                for (int i = 0; i < PwArray.Length; i++)
+                {
+                    int asciifirst = (int)PwArray[i];
+                    int asciisecond = (int)PwArray[i + 1];
+                    int asciithird = (int)PwArray[i + 2];
+                    if (asciifirst == asciisecond && asciisecond == asciithird || asciifirst + 1 == asciisecond && asciisecond + 1 == asciithird || asciifirst - 1 == asciisecond && asciisecond - 1 == asciithird)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
             }
 
-
-            // Check password contains a mix of lower case, upper case and non letter characters
-            // QWErty%^& = valid
-            // QWERTYUi = not valid
-            // ab£$%^&* = not valid
-            // QWERTYu! = valid
-            char[] PwArray = password.ToCharArray();
-            for (int i = 0; i < PwArray.Length; i++)
-            {
-                int asciifirst = (int)PwArray[i];
-                int asciisecond = (int)PwArray[i + 1]
-                if (asciifirst ==  
-            }
-
+            return true;
 
 
 
@@ -89,29 +104,29 @@
 
 
 
-        static bool validEmail(string email)
-        {
-            // a valid email address
-            // has at least 2 characters followed by an @ symbol
-            // has at least 2 characters followed by a .
-            // has at least 2 characters after the .
-            // contains only one @ and any number of .
-            // does not contain any other non letter or number characters
+        //static bool validEmail(string email)
+        //{
+        //    // a valid email address
+        //    // has at least 2 characters followed by an @ symbol
+        //    // has at least 2 characters followed by a .
+        //    // has at least 2 characters after the .
+        //    // contains only one @ and any number of .
+        //    // does not contain any other non letter or number characters
 
-        }
-        static string createUserName(string firstName, string lastName, int age)
-        {
-            // username is made up from:
-            // first two characters of first name
-            // last two characters of last name
-            // age
-            //e.g. Bob Smith aged 34 would have the username Both34
-
-
+        //}
+        //static string createUserName(string firstName, string lastName, int age)
+        //{
+        //    // username is made up from:
+        //    // first two characters of first name
+        //    // last two characters of last name
+        //    // age
+        //    //e.g. Bob Smith aged 34 would have the username Both34
 
 
 
 
-        }
+
+
+        //}
     }
 }
